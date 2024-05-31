@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+
+  app:
+    build:
+      args:
+        user: ${USERNAME:-WWW}
+        uid: ${UID:-1000}
+      context: ./
+      dockerfile: Dockerfile
+    image: developers
+    container_name: developers-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - developers
+
+  db:
+    image: mysql:5.7
+    container_name: developers-db
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    networks:
+      - developers
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: developers-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./.docker/nginx:/etc/nginx/conf.d
+    networks:
+      - developers
+
+networks:
+  developers:
+    driver: bridge
