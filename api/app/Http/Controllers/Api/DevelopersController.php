@@ -2,25 +2,64 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\RouteParams;
 use App\Http\Controllers\Controller;
+use App\Models\Developer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
 
 class DevelopersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $routeParams;
+
+    public function __construct()
     {
-        echo  "NU UNDEX:";
+        $this->routeParams = new RouteParams();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      */
-    public function create()
+    public function index(Request $request)
     {
-        //
+
+        $queryParams = $this->routeParams->getFilterQueryParams($request);
+
+        $results = Developer::query()
+            ->select(['id', 'nome', 'sexo', 'data_nascimento', 'idade', 'hobby', 'nivel_id'])
+            ->where('nome', 'LIKE', '%' . $queryParams['query'] . '%')
+            ->orWhere('hobby', 'LIKE', '%' . $queryParams['query'] . '%')
+            ->orWhere('data_nascimento', 'LIKE', '%' . $queryParams['query'] . '%')
+            ->with('nivel')
+            ->orderBy($queryParams['orderBy'], $queryParams['order'])
+            ->paginate($queryParams['perPage'])
+            ->toArray();
+
+        $newResults = [
+            "data" => $results["data"],
+            "meta" => [
+                "total" => $results["total"],
+                "per_page" => $results["per_page"],
+                "current_page" => $results["current_page"],
+                "last_page" => $results["last_page"]
+            ]
+        ];
+
+        return response()->json($newResults, sizeof($results["data"]) > 0 ? 200 : 404);
+    }
+
+    private function formatDeveloperRequest(array $request)
+    {
+        $currentDate      = Carbon::now();
+        $birthDate        = Carbon::parse($request['data_nascimento'] ?? $currentDate->toDateString());
+        $developerAge     = $currentDate->diffInYears($birthDate);
+        $request['idade'] = $developerAge;
+
+        $request['data_nascimento'] = $birthDate;
+
+        return $request;
     }
 
     /**
@@ -28,31 +67,48 @@ class DevelopersController extends Controller
      */
     public function store(Request $request)
     {
-        echo "CAdastra Dev";
+        try {
+            $formData     = $this->formatDeveloperRequest($request->all());
+            $newDeveloper = Developer::create($formData);
+
+            return response($newDeveloper, 201);
+        } catch (\Throwable $th) {
+            return response('Erro ao cadastrar desenvolvedor', 400);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        echo "Editar Dewve: " . $id;
+        try {
+
+            if (!$id || empty($id)) {
+                throw new \Exception("Parâmetro ID obrigatório", 422);
+            }
+
+            $developer = Developer::find($id);
+            $formData  = $this->formatDeveloperRequest($request->all());
+
+            $developer->nome = $formData['nome'];
+            $developer->hobby = $formData['hobby'];
+            $developer->nivel_id = $formData['nivel_id'];
+            $developer->sexo = $formData['sexo'];
+            $developer->data_nascimento = $formData['data_nascimento'];
+
+            $developer->save();
+
+            return response()->json($developer, 200);
+        } catch (\Exception $ex) {
+
+            if ($ex->getCode() === 422) {
+                return response($ex->getMessage(), $ex->getCode());
+            }
+
+            return response('Erro ao cadastrar nível', 400);
+        }
     }
 
     /**
@@ -60,6 +116,13 @@ class DevelopersController extends Controller
      */
     public function destroy(string $id)
     {
-        echo "Excluir: " . $id;
+        try {
+            $developer = Developer::find($id);
+            $developer->delete();
+
+            return response()->json($developer, 204);
+        } catch (\Throwable $th) {
+            return response(null, 400);
+        }
     }
 }

@@ -17,10 +17,11 @@ class Developer extends Model
         "hobby",
         "nivel_id",
         "sexo",
-        "data_nascimento"
+        "data_nascimento",
+        "idade"
     ];
 
-    public function level(): HasOne
+    public function nivel()
     {
         return $this->hasOne(Level::class, 'id', 'nivel_id');
     }
