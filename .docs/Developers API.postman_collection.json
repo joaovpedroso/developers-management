@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{api_route}}/niveis?order=asc&orderBy=id",
+							"raw": "{{api_route}}/niveis?order=desc&orderBy=developers_count",
 							"host": [
 								"{{api_route}}"
 							],
@@ -24,20 +24,30 @@
 							"query": [
 								{
 									"key": "order",
-									"value": "asc"
+									"value": "desc",
+									"description": "asc | desc"
 								},
 								{
 									"key": "orderBy",
-									"value": "id"
+									"value": "developers_count",
+									"description": "nivel, id"
 								},
 								{
 									"key": "perPage",
-									"value": "2",
+									"value": "1",
+									"description": "default 10",
 									"disabled": true
 								},
 								{
 									"key": "query",
 									"value": "Nivel 6",
+									"description": "search query",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "current page",
 									"disabled": true
 								}
 							]
@@ -145,6 +155,38 @@
 							],
 							"path": [
 								"desenvolvedores"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": null,
+									"description": "asc | desc",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": null,
+									"description": "column id, nome, sexo, data_nascimento, idade, hoby",
+									"disabled": true
+								},
+								{
+									"key": "perPage",
+									"value": "1",
+									"description": "default 10",
+									"disabled": true
+								},
+								{
+									"key": "query",
+									"value": null,
+									"description": "search query",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"description": "current page",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -183,7 +225,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Claudio\",\n    \"hobby\": \"Correr no parque\",\n    \"nivel_id\": 2,\n    \"sexo\": \"M\",\n    \"data_nascimento\": \"1990-01-01\"    \n}",
+							"raw": "{\n    \"nome\": \"Jose ourides da cruz\",\n    \"sexo\": \"M\",\n    \"nivel_id\": 4,\n    \"data_nascimento\": \"1990-07-01\",\n    \"hobby\": \"Ser um dev de sucess\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -202,7 +244,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "2"
 								}
 							]
 						}
