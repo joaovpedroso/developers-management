@@ -1,7 +1,6 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
 import { Pagination } from "./Pagination";
 import userEvent from "@testing-library/user-event";
-import { act } from "react";
 
 describe("Pagination", () => {
   it("should render pagination", async () => {
