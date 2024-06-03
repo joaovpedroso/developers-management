@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 const Layout = ({ children, ...bodyProps }: ILayout) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Box component="body" display="flex" flexDirection="row" {...bodyProps}>
+      <Box component="div" display="flex" flexDirection="row" {...bodyProps}>
         <ToastContainer />
         <Sidebar />
         <Content>{children}</Content>

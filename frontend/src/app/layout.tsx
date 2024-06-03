@@ -27,11 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <AppRouterCacheProvider>
-        <ThemeProvider theme={theme}>
-          <Layout className={inter.className}>{children}</Layout>
-        </ThemeProvider>
-      </AppRouterCacheProvider>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            <Layout className={inter.className}>{children}</Layout>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }

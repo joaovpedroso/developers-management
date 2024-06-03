@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkeletonTable should match snapshot 1`] = `
+<div
+  class="MuiGrid-root css-10xli1p-MuiGrid-root"
+>
+  <span
+    class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+    style="width: 100%; height: 50px;"
+  />
+  <div
+    class="MuiGrid-root css-1h5myfb-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 70px;"
+    />
+  </div>
+  <div
+    class="MuiGrid-root css-1h5myfb-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 70px;"
+    />
+  </div>
+  <div
+    class="MuiGrid-root css-1h5myfb-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 70px;"
+    />
+  </div>
+  <div
+    class="MuiGrid-root css-1h5myfb-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 70px;"
+    />
+  </div>
+  <div
+    class="MuiGrid-root css-1h5myfb-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 70px;"
+    />
+  </div>
+  <div
+    class="MuiGrid-root css-1h5myfb-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 70px;"
+    />
+  </div>
+  <div
+    class="MuiGrid-root css-1nogpbe-MuiGrid-root"
+  >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-16fe59p-MuiSkeleton-root"
+      style="width: 100%; height: 50px;"
+    />
+  </div>
+</div>
+`;

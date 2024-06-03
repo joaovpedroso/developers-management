@@ -29,7 +29,7 @@ const Sidebar = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", bgcolor: "primary.main" }}>
+    <Box component="aside" sx={{ display: "flex", bgcolor: "primary.main" }}>
       <Drawer.default variant="permanent" open={isOpenDrawer}>
         <Drawer.header sx={{ backgroundColor: "primary.dark" }}>
           <IconButton onClick={handleToggleDrawer}>

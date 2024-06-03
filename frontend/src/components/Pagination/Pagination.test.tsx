@@ -27,6 +27,24 @@ describe("Pagination", () => {
     expect(perPageLabel).toBeInTheDocument();
   });
 
+  it("should render per page value when param total is negative", async () => {
+    const currentPage = 1;
+    const perPage = 10;
+    const totalResults = -1;
+
+    render(
+      <Pagination
+        handleChangePage={jest.fn}
+        page={currentPage}
+        perPage={perPage}
+        total={totalResults}
+      />
+    );
+
+    const currentResults = await screen.findByText("1–10 de 10");
+    expect(currentResults).toBeInTheDocument();
+  });
+
   it("should callback on change per page", async () => {
     const currentPage = 1;
     const perPage = 10;
@@ -61,6 +79,35 @@ describe("Pagination", () => {
     await act(() => userEvent.click(perPageOption));
 
     expect(mockPerPageChange).toHaveBeenCalled();
-    // await waitFor(() => expect(mockPerPageChange).toHaveBeenCalled());
+  });
+
+  it("should callback on change page", async () => {
+    const currentPage = 1;
+    const perPage = 10;
+    const totalResults = 100;
+    const mockPageChange = jest.fn();
+
+    render(
+      <Pagination
+        handleChangePage={mockPageChange}
+        handleChangePerPage={jest.fn}
+        page={currentPage}
+        perPage={perPage}
+        total={totalResults}
+      />
+    );
+
+    const currentResults = await screen.findByText("1–10 de 100");
+    expect(currentResults).toBeInTheDocument();
+
+    const nextPageButton = screen.getByRole("button", {
+      description: "Go to next page",
+    });
+
+    expect(nextPageButton).toBeInTheDocument();
+
+    await act(() => userEvent.click(nextPageButton));
+
+    expect(mockPageChange).toHaveBeenCalled();
   });
 });
