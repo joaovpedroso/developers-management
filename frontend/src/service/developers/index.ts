@@ -18,7 +18,7 @@ const getDevelopers = async (params: IFilters) => {
   return response.json();
 };
 
-const updateDevelopers = (formData) => {
+const updateDevelopers = (formData: any) => {
   const route = API_URL.developer.update.replace(":devID", formData.id);
 
   delete formData.id;
@@ -30,7 +30,7 @@ const updateDevelopers = (formData) => {
   });
 };
 
-const createDeveloper = (formData) => {
+const createDeveloper = (formData: any) => {
   const route = API_URL.developer.create;
 
   return fetch(route, {

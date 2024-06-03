@@ -19,7 +19,7 @@ const getLevels = async (params: IFilters) => {
   return response.json();
 };
 
-const updateLevel = (formData) => {
+const updateLevel = (formData: any) => {
   const route = API_URL.level.update.replace(":nivelID", formData.id);
 
   delete formData.id;
@@ -31,7 +31,7 @@ const updateLevel = (formData) => {
   });
 };
 
-const createLevel = (formData) => {
+const createLevel = (formData: any) => {
   const route = API_URL.level.create;
 
   return fetch(route, {
