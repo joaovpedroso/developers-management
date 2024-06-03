@@ -89,7 +89,7 @@ class DevelopersController extends Controller
                 throw new \Exception("Parâmetro ID obrigatório", 422);
             }
 
-            $developer = Developer::find($id);
+            $developer = Developer::findOrFail($id);
             $formData  = $this->formatDeveloperRequest($request->all());
 
             $developer->nome = $formData['nome'];
@@ -103,11 +103,13 @@ class DevelopersController extends Controller
             return response()->json($developer, 200);
         } catch (\Exception $ex) {
 
+
+
             if ($ex->getCode() === 422) {
                 return response($ex->getMessage(), $ex->getCode());
             }
 
-            return response('Erro ao cadastrar nível', 400);
+            return response($ex->getMessage(), 400);
         }
     }
 
