@@ -3,9 +3,9 @@
 import IconCode from "@mui/icons-material/Code";
 
 import { DevelopersList } from "./DevelopersList";
-import { ICurrentModal, IDeveloper, ModalType } from "./Developers.types";
+import { ICurrentModal, ModalType } from "./Developers.types";
 import { PageTitle } from "@/components/PageTitle";
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { ActionEnum, IFilters, IMeta, OrdenationEnum } from "@/types/Common";
 import { DeleteModal } from "@/components/DeleteModal";
 import { DeveloperForm } from "@/components/Forms/DeveloperForm";
@@ -98,7 +98,7 @@ const DevelopersPage = () => {
   const handleRefuseEdition = () => handleCloseOpenedModal();
 
   const handleSearchTerm = (
-    event: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFilters((activeFilters) => ({
       ...activeFilters,

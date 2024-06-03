@@ -7,7 +7,7 @@ import { ActionEnum, IFilters, IMeta, OrdenationEnum } from "@/types/Common";
 
 import IconAccountTree from "@mui/icons-material/AccountTree";
 import { Button, Grid, TextField } from "@mui/material";
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { ICurrentModal, ModalType } from "../desenvolvedores/Developers.types";
 import { SkeletonTable } from "@/components/SkeletonTable";
 import { LevelsList } from "./LevelsList";
@@ -47,7 +47,7 @@ const LevelsPage = () => {
   const meta = data?.meta ?? ({} as IMeta);
 
   const handleSearchTerm = (
-    event: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFilters((activeFilters) => ({
       ...activeFilters,
