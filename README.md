@@ -8,9 +8,7 @@
 
 - Deverá copiar o arquivo .env.example para .env e adicionar o valor a env ```DB_PASSWORD```.
 
-- rodar o comando ```docker compose build``` para buildar as imagens do Dockerfile.
-
-- rodar o comando ```docker-compose up -d``` para subir os containers da aplicação e ter ela acessível.
+- rodar o comando ```docker-compose up --build``` para buildar  e subir ambiente.
 
 Após executado os passos acima, a aplicação frontend estará disponivel através da URL [localhost:3000](http://localhost:3000) e a API através da URL [localhost:8000](http://localhost:8000).
 
