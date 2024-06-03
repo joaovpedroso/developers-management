@@ -33,7 +33,7 @@ const Pagination = ({
       labelDisplayedRows={({ from, to, count }) =>
         `${from}–${to} de ${count !== -1 ? count : `${to}`}`
       }
-      labelRowsPerPage={"Por pagina"}
+      labelRowsPerPage="Por pagina"
     />
   );
 };

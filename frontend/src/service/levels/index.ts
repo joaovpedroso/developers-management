@@ -1,10 +1,9 @@
 import { API_URL } from "@/constants";
 import { IFilters } from "@/types/Common";
-
-const BASE_URL = "http://localhost:8000/api/niveis";
+import { getQueryFilters } from "@/utils";
 
 const getLevels = async (params: IFilters) => {
-  const urlParams = new URLSearchParams(params);
+  const urlParams = getQueryFilters(params);
 
   const route = API_URL.level.list.replace(
     ":queryParams",

@@ -14,7 +14,7 @@ import { SkeletonButton } from "./SkeletonButton";
 const DeleteModal = ({
   isOpen,
   itemId,
-  isLoading = false,
+  isLoading,
   onConfirm,
   onRefuse,
 }: IDeleteModal) => {
@@ -44,7 +44,7 @@ const DeleteModal = ({
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           Essa ação não poderá ser desfeita após a confirmação. <br />
-          <Typography fontWeight="600">Deseja realmente excluir?</Typography>
+          <strong>Deseja realmente excluir?</strong>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

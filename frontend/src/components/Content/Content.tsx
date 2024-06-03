@@ -4,8 +4,6 @@ import { Box, useTheme } from "@mui/material";
 const Content = ({ children }: { children: React.ReactNode }) => {
   const theme = useTheme();
 
-  console.log("theme", theme);
-
   return (
     <Box
       component="main"

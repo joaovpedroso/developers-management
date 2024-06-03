@@ -1,10 +1,12 @@
 import { INivel } from "@/app/desenvolvedores/Developers.types";
 import { getLevels } from "@/service/levels";
-import { IFilters, IResponseData } from "@/types/Common";
+import { IFilters, IResponseData, OrdenationEnum } from "@/types/Common";
 import { useQuery } from "@tanstack/react-query";
 
 const useLevels = (filters?: IFilters) => {
-  const defaultFilters = {};
+  const defaultFilters = {
+    order: OrdenationEnum.asc,
+  };
 
   const { isError, isSuccess, data, isLoading, refetch } = useQuery<
     IResponseData<INivel>

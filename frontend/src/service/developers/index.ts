@@ -1,8 +1,10 @@
 import { API_URL } from "@/constants";
 import { IFilters } from "@/types/Common";
+import { getQueryFilters } from "@/utils";
 
 const getDevelopers = async (params: IFilters) => {
-  const urlParams = new URLSearchParams(params);
+  const urlParams = getQueryFilters(params);
+
   const route = API_URL.developer.list.replace(
     ":queryParams",
     urlParams.toString()
