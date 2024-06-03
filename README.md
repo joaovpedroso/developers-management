@@ -15,3 +15,9 @@ Após executado os passos acima, a aplicação frontend estará disponivel atrav
 
 ## Documentação
 - Para acessar a documentação da API, está disponível no diretório ```.docs``` os arquivos JSON da collection e environment do Postman.
+
+### Testes
+Para executar os testes deveŕa primeiro acessar o bash do container ```docker exec -it developers-frontend-app sh``` e então ```yarn test```
+
+### Backend
+Para acessar o terminal do container backend ```docker exec -it developers-app sh```
