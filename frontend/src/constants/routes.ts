@@ -13,6 +13,4 @@ const API_ROUTES = {
   },
 };
 
-console.log("URL", process.env, process.env.NEXT_PUBLIC_API_URL);
-
 export { API_ROUTES };
