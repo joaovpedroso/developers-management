@@ -10,7 +10,7 @@
 
 - Deverá duplicar o arquivo .env.example dentro do diretório ```/frontend``` para .env e definir a URL da API para que a aplicação frontend consiga acessar.
 
-- rodar o comando ```docker-compose up --build``` para buildar  e subir ambiente.
+- rodar o comando ```make build-up``` para buildar  e subir ambiente.
 
 Após executado os passos acima, a aplicação frontend estará disponivel através da URL [localhost:3000](http://localhost:3000) e a API através da URL [localhost:8000/api](http://localhost:8000/api).
 
@@ -19,7 +19,10 @@ Após executado os passos acima, a aplicação frontend estará disponivel atrav
 - Para acessar a documentação da API, está disponível no diretório ```.docs``` os arquivos JSON da collection e environment do Postman.
 
 ### Testes
-Para executar os testes deveŕa primeiro acessar o bash do container ```docker exec -it developers-frontend-app sh``` e então ```yarn test```
+Para executar os testes execute ```make fe-test```
+
+### Frontend
+Para acessar o terminal do container frontend ```make fe-bash```
 
 ### Backend
-Para acessar o terminal do container backend ```docker exec -it developers-app sh```
+Para acessar o terminal do container backend ```make api-bash```
