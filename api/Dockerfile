@@ -32,4 +32,8 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
+COPY . /var/www
+
+RUN composer install
+
 USER $user
