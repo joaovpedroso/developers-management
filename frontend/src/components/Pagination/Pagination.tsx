@@ -22,12 +22,14 @@ const Pagination = ({
     handleChangePerPage?.(event.target.value);
   };
 
+  const pageNumber = Number(page - 1);
+
   return (
     <TablePagination
       component="div"
-      count={total}
-      page={page - 1}
-      rowsPerPage={perPage}
+      count={!isNaN(total) ? total : 0}
+      page={!isNaN(pageNumber) ? Number(pageNumber) : 0}
+      rowsPerPage={!isNaN(perPage) ? perPage : 0}
       onPageChange={onChangePage}
       onRowsPerPageChange={onChangePerPage}
       labelDisplayedRows={({ from, to, count }) =>

@@ -27,6 +27,24 @@ describe("Pagination", () => {
     expect(perPageLabel).toBeInTheDocument();
   });
 
+  it("should render pagination", async () => {
+    const currentPage = Number("invalid page");
+    const perPage = Number("invalid per page");
+    const totalResults = Number("invalid total");
+
+    render(
+      <Pagination
+        handleChangePage={jest.fn}
+        page={currentPage}
+        perPage={perPage}
+        total={totalResults}
+      />
+    );
+
+    const currentResults = await screen.findByText("0–0 de 0");
+    expect(currentResults).toBeInTheDocument();
+  });
+
   it("should render per page value when param total is negative", async () => {
     const currentPage = 1;
     const perPage = 10;
