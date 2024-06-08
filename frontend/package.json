@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest --coverage --silent"
   },
   "resolutions": {
     "string-width": "4.2.3",
