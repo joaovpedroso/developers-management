@@ -1,11 +1,11 @@
-import { API_URL } from "@/constants";
+import { API_ROUTES } from "@/constants";
 import { IFilters } from "@/types/Common";
 import { getQueryFilters } from "@/utils";
 
 const getLevels = async (params: IFilters) => {
   const urlParams = getQueryFilters(params);
 
-  const route = API_URL.level.list.replace(
+  const route = API_ROUTES.level.list.replace(
     ":queryParams",
     urlParams.toString()
   );
@@ -20,7 +20,7 @@ const getLevels = async (params: IFilters) => {
 };
 
 const updateLevel = (formData: any) => {
-  const route = API_URL.level.update.replace(":nivelID", formData.id);
+  const route = API_ROUTES.level.update.replace(":nivelID", formData.id);
 
   delete formData.id;
 
@@ -32,7 +32,7 @@ const updateLevel = (formData: any) => {
 };
 
 const createLevel = (formData: any) => {
-  const route = API_URL.level.create;
+  const route = API_ROUTES.level.create;
 
   return fetch(route, {
     method: "POST",
@@ -42,7 +42,7 @@ const createLevel = (formData: any) => {
 };
 
 const deleteLevel = (levelId: number) => {
-  const route = API_URL.developer.delete.replace(
+  const route = API_ROUTES.developer.delete.replace(
     ":nivelID",
     levelId.toString()
   );

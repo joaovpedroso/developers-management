@@ -1,11 +1,11 @@
-import { API_URL } from "@/constants";
+import { API_ROUTES } from "@/constants";
 import { IFilters } from "@/types/Common";
 import { getQueryFilters } from "@/utils";
 
 const getDevelopers = async (params: IFilters) => {
   const urlParams = getQueryFilters(params);
 
-  const route = API_URL.developer.list.replace(
+  const route = API_ROUTES.developer.list.replace(
     ":queryParams",
     urlParams.toString()
   );
@@ -19,7 +19,7 @@ const getDevelopers = async (params: IFilters) => {
 };
 
 const updateDevelopers = (formData: any) => {
-  const route = API_URL.developer.update.replace(":devID", formData.id);
+  const route = API_ROUTES.developer.update.replace(":devID", formData.id);
 
   delete formData.id;
 
@@ -31,7 +31,7 @@ const updateDevelopers = (formData: any) => {
 };
 
 const createDeveloper = (formData: any) => {
-  const route = API_URL.developer.create;
+  const route = API_ROUTES.developer.create;
 
   return fetch(route, {
     method: "POST",
@@ -41,7 +41,7 @@ const createDeveloper = (formData: any) => {
 };
 
 const deleteDeveloper = (devId: number) => {
-  const route = API_URL.developer.delete.replace(":devID", devId.toString());
+  const route = API_ROUTES.developer.delete.replace(":devID", devId.toString());
 
   return fetch(route, {
     method: "DELETE",

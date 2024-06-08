@@ -1,16 +1,18 @@
-const API_URL = {
+const API_ROUTES = {
   level: {
-    list: "http://localhost:8000/api/niveis?:queryParams",
-    create: "http://localhost:8000/api/niveis",
-    update: "http://localhost:8000/api/niveis/:nivelID",
-    delete: "http://localhost:8000/api/niveis/:nivelID",
+    list: `${process.env.NEXT_PUBLIC_API_URL}/niveis?:queryParams`,
+    create: `${process.env.NEXT_PUBLIC_API_URL}/niveis`,
+    update: `${process.env.NEXT_PUBLIC_API_URL}/niveis/:nivelID`,
+    delete: `${process.env.NEXT_PUBLIC_API_URL}/niveis/:nivelID`,
   },
   developer: {
-    list: "http://localhost:8000/api/desenvolvedores?:queryParams",
-    create: "http://localhost:8000/api/desenvolvedores",
-    update: "http://localhost:8000/api/desenvolvedores/:devID",
-    delete: "http://localhost:8000/api/desenvolvedores/:devID",
+    list: `${process.env.NEXT_PUBLIC_API_URL}/desenvolvedores?:queryParams`,
+    create: `${process.env.NEXT_PUBLIC_API_URL}/desenvolvedores`,
+    update: `${process.env.NEXT_PUBLIC_API_URL}/desenvolvedores/:devID`,
+    delete: `${process.env.NEXT_PUBLIC_API_URL}/desenvolvedores/:devID`,
   },
 };
 
-export { API_URL };
+console.log("URL", process.env, process.env.NEXT_PUBLIC_API_URL);
+
+export { API_ROUTES };
