@@ -8,9 +8,11 @@
 
 - Deverá copiar o arquivo .env.example para .env e adicionar o valor a env ```DB_PASSWORD```.
 
+- Deverá duplicar o arquivo .env.example dentro do diretório ```/frontend``` para .env e definir a URL da API para que a aplicação frontend consiga acessar.
+
 - rodar o comando ```docker-compose up --build``` para buildar  e subir ambiente.
 
-Após executado os passos acima, a aplicação frontend estará disponivel através da URL [localhost:3000](http://localhost:3000) e a API através da URL [localhost:8000](http://localhost:8000).
+Após executado os passos acima, a aplicação frontend estará disponivel através da URL [localhost:3000](http://localhost:3000) e a API através da URL [localhost:8000/api](http://localhost:8000/api).
 
 
 ## Documentação
