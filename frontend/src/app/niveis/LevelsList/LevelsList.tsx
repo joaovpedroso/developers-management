@@ -26,33 +26,38 @@ const LevelsList = ({
           columns={LEVEL_COLUMNS}
           onChangeOrdenation={onChangeOrdenation}
         />
-        <Table.body
-          rows={data.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell align="left">{row.nivel}</TableCell>
-              <TableCell align="left">{row.developers_count}</TableCell>
-              <TableCell align="left">
-                <IconButton
-                  aria-label="edit"
-                  onClick={() => onSelectItem?.(row.id, ActionEnum.EDIT)}
-                >
-                  <EditIcon color="primary" />
-                </IconButton>
 
-                {row.developers_count > 0 ? (
-                  <DisabledButton />
-                ) : (
+        {!data || data.length < 1 ? (
+          <Table.emptyResults tableColumnsLength={3} />
+        ) : (
+          <Table.body
+            rows={data.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell align="left">{row.nivel}</TableCell>
+                <TableCell align="left">{row.developers_count}</TableCell>
+                <TableCell align="left">
                   <IconButton
-                    aria-label="delete"
-                    onClick={() => onSelectItem?.(row.id, ActionEnum.DELETE)}
+                    aria-label="edit"
+                    onClick={() => onSelectItem?.(row.id, ActionEnum.EDIT)}
                   >
-                    <DeleteIcon color="error" />
+                    <EditIcon color="primary" />
                   </IconButton>
-                )}
-              </TableCell>
-            </TableRow>
-          ))}
-        />
+
+                  {row.developers_count > 0 ? (
+                    <DisabledButton />
+                  ) : (
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => onSelectItem?.(row.id, ActionEnum.DELETE)}
+                    >
+                      <DeleteIcon color="error" />
+                    </IconButton>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          />
+        )}
       </Table.default>
       <Box
         sx={{

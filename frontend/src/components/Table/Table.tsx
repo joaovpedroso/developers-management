@@ -2,6 +2,7 @@ import { Box, Paper, Table as MuiTable, TableContainer } from "@mui/material";
 import { Header } from "./Header";
 import { Body } from "./Body";
 import { ITable } from "./Table.types";
+import { EmptyResults } from "./EmptyResults";
 
 const TableComponent = ({ children, label }: ITable) => {
   return (
@@ -19,6 +20,7 @@ const Table = {
   default: TableComponent,
   header: Header,
   body: Body,
+  emptyResults: EmptyResults,
 };
 
 export { Table };
